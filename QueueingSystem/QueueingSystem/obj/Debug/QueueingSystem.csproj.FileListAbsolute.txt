@@ -1,0 +1,12 @@
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\bin\Debug\QueueingSystem.exe.config
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\bin\Debug\QueueingSystem.exe
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\bin\Debug\QueueingSystem.pdb
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.Cashier.resources
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.loginPage.resources
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.Properties.Resources.resources
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.GetQueue.resources
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.csproj.GenerateResource.cache
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.exe
+C:\Users\ADMIN\Desktop\queue\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.pdb
