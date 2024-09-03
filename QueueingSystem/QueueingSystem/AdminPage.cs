@@ -16,6 +16,7 @@ namespace QueueingSystem
         public AdminPage()
         {
             InitializeComponent();
+            loadForm(new AdminHome());
         }
         public void loadForm(object Form)
         {
@@ -27,6 +28,7 @@ namespace QueueingSystem
             this.pnlMain.Controls.Add(form);
             this.pnlMain.Tag = form;
             form.Show();
+            
         }
         private void btnAdminQueue_Click(object sender, EventArgs e)
         {
@@ -37,11 +39,11 @@ namespace QueueingSystem
         {
             loadForm(new AdminCashier());
         }
-
         private void btnAdminHome_Click(object sender, EventArgs e)
         {
             loadForm(new AdminHome());
         }
+
 
         private void Admin_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -64,5 +66,6 @@ namespace QueueingSystem
                 this.Close();
         }
 
+        
     }
 }

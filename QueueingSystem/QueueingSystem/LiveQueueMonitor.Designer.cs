@@ -31,15 +31,15 @@ namespace QueueingSystem
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LiveQueueMonitor));
             this.panelQueuing = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
             this.lblQueueNumber = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelVideo = new System.Windows.Forms.Panel();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.panelTime = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
             this.panelQueuing.SuspendLayout();
             this.panelVideo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
@@ -60,6 +60,19 @@ namespace QueueingSystem
             this.panelQueuing.Size = new System.Drawing.Size(533, 525);
             this.panelQueuing.TabIndex = 0;
             // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(67, 414);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(408, 98);
+            this.listView1.TabIndex = 3;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -67,7 +80,7 @@ namespace QueueingSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(59, 287);
+            this.label3.Location = new System.Drawing.Point(59, 365);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 46);
             this.label3.TabIndex = 2;
@@ -126,50 +139,37 @@ namespace QueueingSystem
             // panelTime
             // 
             this.panelTime.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.panelTime.Controls.Add(this.label9);
-            this.panelTime.Controls.Add(this.label10);
+            this.panelTime.Controls.Add(this.lblDate);
+            this.panelTime.Controls.Add(this.lblTime);
             this.panelTime.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelTime.Location = new System.Drawing.Point(533, 381);
             this.panelTime.Name = "panelTime";
             this.panelTime.Size = new System.Drawing.Size(419, 144);
             this.panelTime.TabIndex = 1;
             // 
-            // label9
+            // lblDate
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label9.Location = new System.Drawing.Point(149, 65);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(135, 31);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "8/22/2024";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblDate.Location = new System.Drawing.Point(164, 65);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(150, 31);
+            this.lblDate.TabIndex = 9;
+            this.lblDate.Text = "00/00/0000";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label10
+            // lblTime
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label10.Location = new System.Drawing.Point(164, 34);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 31);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "2:48 pm";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // listView1
-            // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(67, 336);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(408, 176);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblTime.Location = new System.Drawing.Point(164, 34);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(114, 31);
+            this.lblTime.TabIndex = 8;
+            this.lblTime.Text = "0:00 AM";
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LiveQueueMonitor
             // 
@@ -183,7 +183,6 @@ namespace QueueingSystem
             this.KeyPreview = true;
             this.Name = "LiveQueueMonitor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LiveQueueMonitor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.LiveQueueMonitor_Load);
             this.panelQueuing.ResumeLayout(false);
@@ -204,8 +203,8 @@ namespace QueueingSystem
         private System.Windows.Forms.Label lblQueueNumber;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblTime;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
         private System.Windows.Forms.ListView listView1;
     }

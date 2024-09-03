@@ -17,9 +17,10 @@ namespace QueueingSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             loginPage log = new loginPage();
-            CashierOperate cashier = new CashierOperate("Basic Education", "16", "Cashier 4");
-            cashier.Show();
-            //log.Show();
+            //CashierOperate cashier = new CashierOperate("Basic Education", "16", "Cashier 4");
+            //cashier.Show();
+            log.Show();
+            //live.Show();
             Application.Run();
         }
     }

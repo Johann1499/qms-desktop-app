@@ -28,16 +28,23 @@ namespace QueueingSystem
         {
             // Use the path from the TextBox
             string videoPath = txtVideoPath.Text;
+            int volume = trackBar1.Value;
 
             if (!string.IsNullOrEmpty(videoPath))
             {
-                LiveQueueMonitor videoPlayerForm = new LiveQueueMonitor(videoPath);
+                LiveQueueMonitor videoPlayerForm = new LiveQueueMonitor(videoPath, volume);
                 videoPlayerForm.Show();
             }
             else
             {
                 MessageBox.Show("Please select a video file first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            int volume;
+            volume = trackBar1.Value * 10;
+            lblVolume.Text = volume.ToString();
         }
     }
 }

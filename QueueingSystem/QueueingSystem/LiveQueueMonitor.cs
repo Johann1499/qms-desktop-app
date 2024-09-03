@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using System.Speech.Synthesis;
 
 namespace QueueingSystem
 {
@@ -18,12 +19,15 @@ namespace QueueingSystem
         private Point previousLocation;
         private Size previousSize;
         private string videoPath;
-        private Timer refreshTimer;
+        private int volume;
+        private Timer refreshTimer, timerDate;
+        private readonly SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
 
-        public LiveQueueMonitor(string videoPath)
+        public LiveQueueMonitor(string videoPath, int volume)
         {
             InitializeComponent();
             this.videoPath = videoPath;
+            this.volume = volume;
             this.KeyDown += new KeyEventHandler(Form_KeyDown); // Attach key down event handler
             this.FormClosing += new FormClosingEventHandler(LiveQueueMonitor_FormClosing); // Attach form closing event handler
 
@@ -31,12 +35,25 @@ namespace QueueingSystem
             refreshTimer = new Timer();
             refreshTimer.Interval = 3000; // 3 seconds
             refreshTimer.Tick += new EventHandler(OnTimerTick);
+            timerDate = new Timer();
+            timerDate.Interval = 1000; // Set the interval to 1 second
+            timerDate.Tick += timerDate_Tick; // Subscribe to the Tick event
+            timerDate.Start(); // Start the timer
         }
+        private void timerDate_Tick(object sender, EventArgs e)
+        {
+            // Set the label text to the current time
+            lblTime.Text = DateTime.Now.ToString("H:mm tt");
+            lblDate.Text = DateTime.Now.ToString("d");
+        }
+ 
+
 
         private async void LiveQueueMonitor_Load(object sender, EventArgs e)
         {
-            lblQueueNumber.Text = "No queue.";
+            lblQueueNumber.Text = "00000";
             axWindowsMediaPlayer1.URL = videoPath;
+            axWindowsMediaPlayer1.settings.volume = volume * 10;
             axWindowsMediaPlayer1.uiMode = "none";
             axWindowsMediaPlayer1.Ctlcontrols.play();
             axWindowsMediaPlayer1.Dock = DockStyle.Fill;

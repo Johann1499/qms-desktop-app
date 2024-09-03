@@ -13,6 +13,7 @@ namespace QueueingSystem
         public loginPage()
         {
             InitializeComponent();
+            loadForm(new AdminLoginPage());
         }
 
         public void loadForm(object Form)
@@ -32,7 +33,7 @@ namespace QueueingSystem
         private void loginPage_Load(object sender, EventArgs e)
         {
             // Show AdminLoginPage initially
-            loadForm(new AdminLoginPage());
+            //loadForm(new AdminLoginPage());
 
             // Optionally, change the appearance of the Admin button as if it was clicked
             btnAdmin.BackColor = SystemColors.ScrollBar;
@@ -56,6 +57,7 @@ namespace QueueingSystem
 
             // Load the AdminLoginPage form
             loadForm(new AdminLoginPage());
+
         }
 
         private void btnCashier_Click(object sender, EventArgs e)
@@ -75,6 +77,7 @@ namespace QueueingSystem
 
             // Load another form or perform another action
             loadForm(new CashierLoginPage());
+
         }
 
         private void btnLive_Click(object sender, EventArgs e)
@@ -94,6 +97,7 @@ namespace QueueingSystem
 
             // Load another form or perform another action
             loadForm(new LiveQueueLogin());
+
         }
 
         private void loginPage_FormClosing(object sender, FormClosingEventArgs e)

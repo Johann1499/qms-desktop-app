@@ -33,6 +33,8 @@ namespace QueueingSystem
             this.btnLive = new System.Windows.Forms.Button();
             this.btnCashier = new System.Windows.Forms.Button();
             this.pnlLogin = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAdmin
@@ -82,11 +84,21 @@ namespace QueueingSystem
             // 
             // pnlLogin
             // 
+            this.pnlLogin.Controls.Add(this.label1);
             this.pnlLogin.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlLogin.Location = new System.Drawing.Point(0, 58);
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(414, 253);
             this.pnlLogin.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(176, 102);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
             // 
             // loginPage
             // 
@@ -103,6 +115,8 @@ namespace QueueingSystem
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.loginPage_FormClosing);
             this.Load += new System.EventHandler(this.loginPage_Load);
+            this.pnlLogin.ResumeLayout(false);
+            this.pnlLogin.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -112,6 +126,7 @@ namespace QueueingSystem
         private System.Windows.Forms.Button btnLive;
         private System.Windows.Forms.Button btnCashier;
         private System.Windows.Forms.Panel pnlLogin;
+        private System.Windows.Forms.Label label1;
     }
 }
 

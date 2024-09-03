@@ -54,11 +54,10 @@ namespace QueueingSystem
             this.listQueue.HideSelection = false;
             this.listQueue.Location = new System.Drawing.Point(12, 64);
             this.listQueue.Name = "listQueue";
-            this.listQueue.Size = new System.Drawing.Size(576, 374);
+            this.listQueue.Size = new System.Drawing.Size(576, 333);
             this.listQueue.TabIndex = 1;
             this.listQueue.UseCompatibleStateImageBehavior = false;
             this.listQueue.View = System.Windows.Forms.View.Details;
-
             // 
             // AdminQueue
             // 

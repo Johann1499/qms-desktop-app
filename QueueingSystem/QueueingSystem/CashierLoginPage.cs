@@ -19,7 +19,7 @@ namespace QueueingSystem
         {
             InitializeComponent();
             InitializeComboBoxes();
-            LoadAllCashiersAsync();
+            LoadAllCashiersAsync().ConfigureAwait(false); // ConfigureAwait to avoid deadlock
         }
 
         private void InitializeComboBoxes()
@@ -33,9 +33,8 @@ namespace QueueingSystem
         {
             try
             {
-                var response = await client.GetStringAsync("cashiers/inactive");
+                string response = await client.GetStringAsync("cashiers/inactive");
                 allCashiers = JArray.Parse(response);
-                UpdateCashierComboBox(); // Update combo box with the latest data
             }
             catch (Exception ex)
             {
@@ -46,25 +45,28 @@ namespace QueueingSystem
         private void cmbDept_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateCashierComboBox();
-            
         }
 
         private void UpdateCashierComboBox()
         {
-            var selectedDept = cmbDept.SelectedItem?.ToString();
             cmbCashier.Items.Clear();
 
+            var selectedDept = cmbDept.SelectedItem?.ToString();
             if (string.IsNullOrEmpty(selectedDept) || allCashiers == null)
+            {
+                cmbCashier.Enabled = false;
+                btnNext.Enabled = false;
                 return;
+            }
 
             var cashiers = allCashiers
                 .Where(cashier => cashier["department"]?.ToString() == selectedDept)
                 .Select(cashier => cashier["name"]?.ToString())
-                .ToList();
+                .ToArray();
 
-            if (cashiers.Count > 0)
+            if (cashiers.Any())
             {
-                cmbCashier.Items.AddRange(cashiers.ToArray());
+                cmbCashier.Items.AddRange(cashiers);
                 cmbCashier.Enabled = true;
             }
             else
@@ -75,45 +77,43 @@ namespace QueueingSystem
 
         private void cmbCashier_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Ensure there are items in cmbCashier before trying to access the selected item
-            if (cmbCashier.SelectedIndex >= 0 && cmbCashier.SelectedIndex < cmbCashier.Items.Count)
-            {
-                var selectedName = cmbCashier.SelectedItem?.ToString();
-                var selectedCashier = allCashiers?
-                    .FirstOrDefault(cashier => cashier["name"]?.ToString() == selectedName);
+            if (cmbCashier.SelectedIndex < 0) return;
 
-                if (selectedCashier != null)
-                {
-                    selectedCashierID = selectedCashier["id"]?.ToString();
-                    selectedCashierName = selectedCashier["name"]?.ToString();
-                    btnNext.Enabled = !string.IsNullOrEmpty(selectedCashierID);
-                }
+            var selectedName = cmbCashier.SelectedItem?.ToString();
+            var selectedCashier = allCashiers?.FirstOrDefault(cashier => cashier["name"]?.ToString() == selectedName);
+
+            if (selectedCashier != null)
+            {
+                selectedCashierID = selectedCashier["id"]?.ToString();
+                selectedCashierName = selectedCashier["name"]?.ToString();
+                btnNext.Enabled = !string.IsNullOrEmpty(selectedCashierID);
             }
         }
 
         private async void btnNext_Click(object sender, EventArgs e)
         {
-            var selectedDept = cmbDept.SelectedItem?.ToString();
-            if (string.IsNullOrEmpty(selectedDept) || string.IsNullOrEmpty(selectedCashierID))
+            if (string.IsNullOrEmpty(selectedCashierID))
             {
-                MessageBox.Show("Please select a department and a cashier.");
+                MessageBox.Show("Please select a cashier.");
                 return;
             }
 
-            // Check if the cashier is already active
-            if (await CheckCashierStatusAsync(selectedCashierID))
+            try
             {
-                MessageBox.Show($"{selectedCashierName} is already active.");
-                return;
+                if (await CheckCashierStatusAsync(selectedCashierID))
+                {
+                    MessageBox.Show($"{selectedCashierName} is already active.");
+                }
+                else if (await SetCashierActiveAsync(selectedCashierID))
+                {
+                    var cashierOperate = new CashierOperate(cmbDept.SelectedItem.ToString(), selectedCashierID, selectedCashierName);
+                    Hide();
+                    cashierOperate.Show();
+                }
             }
-
-            // Set the cashier to active if not already active
-            var isSuccessful = await SetCashierActiveAsync(selectedCashierID);
-            if (isSuccessful)
+            catch (Exception ex)
             {
-                var cashierOperate = new CashierOperate(selectedDept, selectedCashierID, selectedCashierName);
-                Hide();
-                cashierOperate.Show();
+                ShowError("An error occurred during the operation.", ex);
             }
         }
 
@@ -121,22 +121,9 @@ namespace QueueingSystem
         {
             try
             {
-                var response = await client.GetAsync($"cashiers/{cashierId}/status");
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseBody = await response.Content.ReadAsStringAsync();
-                    var result = JObject.Parse(responseBody);
-                    var status = result["status"]?.ToString();
-
-                    // Assuming that status '1' means active
-                    return status == "1";
-                }
-                else
-                {
-                    var errorMessage = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show($"Error checking cashier status: {response.StatusCode} - {errorMessage}");
-                    return false;
-                }
+                var response = await client.GetStringAsync($"cashiers/{cashierId}/status");
+                var result = JObject.Parse(response);
+                return result["status"]?.ToString() == "1"; // Assuming status '1' means active
             }
             catch (Exception ex)
             {
@@ -144,8 +131,6 @@ namespace QueueingSystem
                 return false;
             }
         }
-
-
 
         private async Task<bool> SetCashierActiveAsync(string cashierId)
         {
@@ -155,17 +140,7 @@ namespace QueueingSystem
             try
             {
                 var response = await client.PutAsync($"cashiers/{cashierId}/status", content);
-                if (response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show($"Welcome {selectedCashierName}.");
-                    return true;
-                }
-                else
-                {
-                    var errorMessage = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show($"Error setting cashier active: {response.StatusCode} - {errorMessage}");
-                    return false;
-                }
+                return response.IsSuccessStatusCode;
             }
             catch (Exception ex)
             {

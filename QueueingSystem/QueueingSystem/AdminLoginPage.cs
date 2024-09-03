@@ -41,7 +41,7 @@ namespace QueueingSystem
                 }
                 else
                 {
-                    MessageBox.Show("Invalid input");
+                    MessageBox.Show("Invalid credentials");
                     btnLogin.Enabled = true; // Re-enable the button if authentication fails
                 }
             }

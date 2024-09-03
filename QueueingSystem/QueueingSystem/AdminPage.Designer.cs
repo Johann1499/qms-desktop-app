@@ -30,11 +30,11 @@ namespace QueueingSystem
         private void InitializeComponent()
         {
             this.pnlSide = new System.Windows.Forms.Panel();
-            this.btnHome = new System.Windows.Forms.Button();
+            this.btnAdminCashier = new System.Windows.Forms.Button();
+            this.btnAdminHome = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnAdminQueue = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.btnAdminCashier = new System.Windows.Forms.Button();
             this.pnlSide.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +42,7 @@ namespace QueueingSystem
             // 
             this.pnlSide.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pnlSide.Controls.Add(this.btnAdminCashier);
-            this.pnlSide.Controls.Add(this.btnHome);
+            this.pnlSide.Controls.Add(this.btnAdminHome);
             this.pnlSide.Controls.Add(this.btnLogout);
             this.pnlSide.Controls.Add(this.btnAdminQueue);
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
@@ -51,22 +51,42 @@ namespace QueueingSystem
             this.pnlSide.Size = new System.Drawing.Size(200, 450);
             this.pnlSide.TabIndex = 0;
             // 
-            // btnHome
+            // btnAdminCashier
             // 
-            this.btnHome.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnHome.FlatAppearance.BorderSize = 0;
-            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.Image = global::QueueingSystem.Properties.Resources.home;
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(3, 68);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.btnHome.Size = new System.Drawing.Size(194, 38);
-            this.btnHome.TabIndex = 4;
-            this.btnHome.Text = "             Home";
-            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnAdminCashier.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnAdminCashier.FlatAppearance.BorderSize = 0;
+            this.btnAdminCashier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdminCashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminCashier.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAdminCashier.Image = global::QueueingSystem.Properties.Resources.cashier;
+            this.btnAdminCashier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdminCashier.Location = new System.Drawing.Point(3, 112);
+            this.btnAdminCashier.Name = "btnAdminCashier";
+            this.btnAdminCashier.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.btnAdminCashier.Size = new System.Drawing.Size(194, 40);
+            this.btnAdminCashier.TabIndex = 1;
+            this.btnAdminCashier.Text = "             Cashier List";
+            this.btnAdminCashier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdminCashier.UseVisualStyleBackColor = false;
+            this.btnAdminCashier.Click += new System.EventHandler(this.btnAdminCashier_Click);
+            // 
+            // btnAdminHome
+            // 
+            this.btnAdminHome.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnAdminHome.FlatAppearance.BorderSize = 0;
+            this.btnAdminHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdminHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminHome.Image = global::QueueingSystem.Properties.Resources.home;
+            this.btnAdminHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdminHome.Location = new System.Drawing.Point(3, 68);
+            this.btnAdminHome.Name = "btnAdminHome";
+            this.btnAdminHome.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.btnAdminHome.Size = new System.Drawing.Size(194, 38);
+            this.btnAdminHome.TabIndex = 4;
+            this.btnAdminHome.Text = "             Home";
+            this.btnAdminHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdminHome.UseVisualStyleBackColor = false;
+            this.btnAdminHome.Click += new System.EventHandler(this.btnAdminHome_Click);
             // 
             // btnLogout
             // 
@@ -114,25 +134,6 @@ namespace QueueingSystem
             this.pnlMain.Size = new System.Drawing.Size(600, 450);
             this.pnlMain.TabIndex = 2;
             // 
-            // btnAdminCashier
-            // 
-            this.btnAdminCashier.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnAdminCashier.FlatAppearance.BorderSize = 0;
-            this.btnAdminCashier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdminCashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdminCashier.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAdminCashier.Image = global::QueueingSystem.Properties.Resources.cashier;
-            this.btnAdminCashier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminCashier.Location = new System.Drawing.Point(3, 112);
-            this.btnAdminCashier.Name = "btnAdminCashier";
-            this.btnAdminCashier.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.btnAdminCashier.Size = new System.Drawing.Size(194, 40);
-            this.btnAdminCashier.TabIndex = 1;
-            this.btnAdminCashier.Text = "             Cashier List";
-            this.btnAdminCashier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminCashier.UseVisualStyleBackColor = false;
-            this.btnAdminCashier.Click += new System.EventHandler(this.btnAdminCashier_Click);
-            // 
             // AdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,6 +157,6 @@ namespace QueueingSystem
         private System.Windows.Forms.Button btnAdminCashier;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnAdminHome;
     }
 }
