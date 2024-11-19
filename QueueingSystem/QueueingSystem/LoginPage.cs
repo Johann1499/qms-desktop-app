@@ -26,6 +26,8 @@ namespace QueueingSystem
             this.pnlLogin.Controls.Add(form);
             this.pnlLogin.Tag = form;
             form.Show();
+
+            btnAdmin.Enabled = false;
         }
 
         private Button lastPressedButton = null;
@@ -57,7 +59,9 @@ namespace QueueingSystem
 
             // Load the AdminLoginPage form
             loadForm(new AdminLoginPage());
-
+            btnCashier.Enabled = true;
+            btnAdmin.Enabled = false;
+            btnLive.Enabled = true;
         }
 
         private void btnCashier_Click(object sender, EventArgs e)
@@ -77,6 +81,9 @@ namespace QueueingSystem
 
             // Load another form or perform another action
             loadForm(new CashierLoginPage());
+            btnCashier.Enabled = false;
+            btnAdmin.Enabled = true;
+            btnLive.Enabled = true;
 
         }
 
@@ -97,7 +104,9 @@ namespace QueueingSystem
 
             // Load another form or perform another action
             loadForm(new LiveQueueLogin());
-
+            btnLive.Enabled = false;
+            btnAdmin.Enabled = true;
+            btnCashier.Enabled = true;
         }
 
         private void loginPage_FormClosing(object sender, FormClosingEventArgs e)

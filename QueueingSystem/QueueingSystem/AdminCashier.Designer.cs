@@ -45,21 +45,20 @@ namespace QueueingSystem
             this.listCashier.FullRowSelect = true;
             this.listCashier.GridLines = true;
             this.listCashier.HideSelection = false;
-            this.listCashier.Location = new System.Drawing.Point(12, 64);
+            this.listCashier.Location = new System.Drawing.Point(47, 146);
             this.listCashier.Name = "listCashier";
-            this.listCashier.Size = new System.Drawing.Size(576, 333);
+            this.listCashier.Size = new System.Drawing.Size(501, 206);
             this.listCashier.TabIndex = 0;
             this.listCashier.UseCompatibleStateImageBehavior = false;
             this.listCashier.View = System.Windows.Forms.View.Details;
-
             // 
             // btnAddNew
             // 
             this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNew.Location = new System.Drawing.Point(501, 13);
+            this.btnAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnAddNew.Location = new System.Drawing.Point(413, 93);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(87, 35);
+            this.btnAddNew.Size = new System.Drawing.Size(135, 47);
             this.btnAddNew.TabIndex = 1;
             this.btnAddNew.Text = "Add New";
             this.btnAddNew.UseVisualStyleBackColor = true;
@@ -68,10 +67,10 @@ namespace QueueingSystem
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(501, 403);
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnDelete.Location = new System.Drawing.Point(461, 358);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(87, 35);
+            this.btnDelete.Size = new System.Drawing.Size(87, 47);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -80,10 +79,10 @@ namespace QueueingSystem
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(408, 403);
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.btnEdit.Location = new System.Drawing.Point(320, 358);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(87, 35);
+            this.btnEdit.Size = new System.Drawing.Size(135, 47);
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -92,10 +91,10 @@ namespace QueueingSystem
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label1.Location = new System.Drawing.Point(6, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.label1.Location = new System.Drawing.Point(36, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 46);
+            this.label1.Size = new System.Drawing.Size(313, 63);
             this.label1.TabIndex = 4;
             this.label1.Text = "Cashier List";
             // 

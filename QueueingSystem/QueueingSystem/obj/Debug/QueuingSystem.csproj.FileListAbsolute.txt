@@ -111,3 +111,4 @@ C:\Users\ADMIN\Desktop\queue-desktop-app\QueueingSystem\QueueingSystem\obj\Debug
 C:\Users\ADMIN\Desktop\queue-desktop-app\QueueingSystem\QueueingSystem\obj\Debug\QueuingSystem.csproj.ResolveComReference.cache
 C:\Users\ADMIN\Desktop\queue-desktop-app\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.LiveQueueMonitor.resources
 C:\Users\ADMIN\Desktop\queue-desktop-app\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.LiveQueueLogin.resources
+C:\Users\ADMIN\Desktop\queue-desktop-app\QueueingSystem\QueueingSystem\obj\Debug\QueueingSystem.AdminSetting.resources

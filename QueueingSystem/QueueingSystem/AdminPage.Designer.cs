@@ -48,7 +48,7 @@ namespace QueueingSystem
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSide.Location = new System.Drawing.Point(0, 0);
             this.pnlSide.Name = "pnlSide";
-            this.pnlSide.Size = new System.Drawing.Size(200, 450);
+            this.pnlSide.Size = new System.Drawing.Size(301, 498);
             this.pnlSide.TabIndex = 0;
             // 
             // btnAdminCashier
@@ -56,14 +56,14 @@ namespace QueueingSystem
             this.btnAdminCashier.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnAdminCashier.FlatAppearance.BorderSize = 0;
             this.btnAdminCashier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdminCashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminCashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnAdminCashier.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAdminCashier.Image = global::QueueingSystem.Properties.Resources.cashier;
             this.btnAdminCashier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminCashier.Location = new System.Drawing.Point(3, 112);
+            this.btnAdminCashier.Location = new System.Drawing.Point(3, 145);
             this.btnAdminCashier.Name = "btnAdminCashier";
             this.btnAdminCashier.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.btnAdminCashier.Size = new System.Drawing.Size(194, 40);
+            this.btnAdminCashier.Size = new System.Drawing.Size(298, 53);
             this.btnAdminCashier.TabIndex = 1;
             this.btnAdminCashier.Text = "             Cashier List";
             this.btnAdminCashier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -75,13 +75,13 @@ namespace QueueingSystem
             this.btnAdminHome.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnAdminHome.FlatAppearance.BorderSize = 0;
             this.btnAdminHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdminHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnAdminHome.Image = global::QueueingSystem.Properties.Resources.home;
             this.btnAdminHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminHome.Location = new System.Drawing.Point(3, 68);
+            this.btnAdminHome.Location = new System.Drawing.Point(3, 88);
             this.btnAdminHome.Name = "btnAdminHome";
             this.btnAdminHome.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.btnAdminHome.Size = new System.Drawing.Size(194, 38);
+            this.btnAdminHome.Size = new System.Drawing.Size(298, 51);
             this.btnAdminHome.TabIndex = 4;
             this.btnAdminHome.Text = "             Home";
             this.btnAdminHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -94,13 +94,13 @@ namespace QueueingSystem
             this.btnLogout.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnLogout.Image = global::QueueingSystem.Properties.Resources.logout;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(3, 385);
+            this.btnLogout.Location = new System.Drawing.Point(3, 414);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.btnLogout.Size = new System.Drawing.Size(194, 38);
+            this.btnLogout.Size = new System.Drawing.Size(298, 57);
             this.btnLogout.TabIndex = 3;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -111,13 +111,13 @@ namespace QueueingSystem
             this.btnAdminQueue.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnAdminQueue.FlatAppearance.BorderSize = 0;
             this.btnAdminQueue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdminQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnAdminQueue.Image = global::QueueingSystem.Properties.Resources.queue;
             this.btnAdminQueue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminQueue.Location = new System.Drawing.Point(3, 158);
+            this.btnAdminQueue.Location = new System.Drawing.Point(3, 204);
             this.btnAdminQueue.Name = "btnAdminQueue";
             this.btnAdminQueue.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.btnAdminQueue.Size = new System.Drawing.Size(194, 38);
+            this.btnAdminQueue.Size = new System.Drawing.Size(298, 51);
             this.btnAdminQueue.TabIndex = 2;
             this.btnAdminQueue.Text = "             Queuing List";
             this.btnAdminQueue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,24 +126,22 @@ namespace QueueingSystem
             // 
             // pnlMain
             // 
-            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlMain.Location = new System.Drawing.Point(200, 0);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(301, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(600, 450);
+            this.pnlMain.Size = new System.Drawing.Size(646, 498);
             this.pnlMain.TabIndex = 2;
             // 
             // AdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(947, 498);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlSide);
             this.Name = "AdminPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ADMINISTRATOR";
+            this.Text = "Administrator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Admin_FormClosing);
             this.pnlSide.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -41,11 +41,11 @@ namespace QueueingSystem
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label1.Location = new System.Drawing.Point(91, 102);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.label1.Location = new System.Drawing.Point(82, 65);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 46);
+            this.label1.Size = new System.Drawing.Size(333, 63);
             this.label1.TabIndex = 0;
             this.label1.Text = "Now Serving";
             // 
@@ -53,23 +53,24 @@ namespace QueueingSystem
             // 
             this.lblQueue.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblQueue.AutoSize = true;
-            this.lblQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.lblQueue.BackColor = System.Drawing.Color.Thistle;
+            this.lblQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F);
             this.lblQueue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblQueue.Location = new System.Drawing.Point(121, 236);
+            this.lblQueue.Location = new System.Drawing.Point(137, 182);
             this.lblQueue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQueue.Name = "lblQueue";
-            this.lblQueue.Size = new System.Drawing.Size(186, 63);
+            this.lblQueue.Size = new System.Drawing.Size(218, 76);
             this.lblQueue.TabIndex = 1;
-            this.lblQueue.Text = "C0000";
+            this.lblQueue.Text = "00000";
             // 
             // btnNext
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btnNext.Location = new System.Drawing.Point(51, 421);
+            this.btnNext.Location = new System.Drawing.Point(58, 327);
             this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(328, 74);
+            this.btnNext.Size = new System.Drawing.Size(380, 74);
             this.btnNext.TabIndex = 2;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
@@ -79,10 +80,10 @@ namespace QueueingSystem
             // 
             this.btnNotify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNotify.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.btnNotify.Location = new System.Drawing.Point(182, 503);
+            this.btnNotify.Location = new System.Drawing.Point(189, 409);
             this.btnNotify.Margin = new System.Windows.Forms.Padding(4);
             this.btnNotify.Name = "btnNotify";
-            this.btnNotify.Size = new System.Drawing.Size(197, 74);
+            this.btnNotify.Size = new System.Drawing.Size(249, 74);
             this.btnNotify.TabIndex = 5;
             this.btnNotify.Text = "Notify";
             this.btnNotify.UseVisualStyleBackColor = true;
@@ -93,15 +94,14 @@ namespace QueueingSystem
             this.listLiveQueue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listLiveQueue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listLiveQueue.Enabled = false;
+            this.listLiveQueue.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listLiveQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listLiveQueue.GridLines = true;
             this.listLiveQueue.HideSelection = false;
-            this.listLiveQueue.Location = new System.Drawing.Point(394, 102);
+            this.listLiveQueue.Location = new System.Drawing.Point(480, 150);
             this.listLiveQueue.Margin = new System.Windows.Forms.Padding(4);
             this.listLiveQueue.Name = "listLiveQueue";
-            this.listLiveQueue.Size = new System.Drawing.Size(574, 475);
+            this.listLiveQueue.Size = new System.Drawing.Size(477, 333);
             this.listLiveQueue.TabIndex = 6;
             this.listLiveQueue.UseCompatibleStateImageBehavior = false;
             this.listLiveQueue.View = System.Windows.Forms.View.Details;
@@ -110,7 +110,7 @@ namespace QueueingSystem
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnRefresh.Location = new System.Drawing.Point(51, 503);
+            this.btnRefresh.Location = new System.Drawing.Point(58, 409);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(123, 74);
@@ -121,23 +121,22 @@ namespace QueueingSystem
             // 
             // lblCashier
             // 
-            this.lblCashier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCashier.AutoSize = true;
+            this.lblCashier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblCashier.Location = new System.Drawing.Point(886, 9);
+            this.lblCashier.Location = new System.Drawing.Point(679, 36);
             this.lblCashier.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCashier.Name = "lblCashier";
-            this.lblCashier.Size = new System.Drawing.Size(51, 20);
+            this.lblCashier.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblCashier.Size = new System.Drawing.Size(282, 20);
             this.lblCashier.TabIndex = 8;
             this.lblCashier.Text = "Name";
-            this.lblCashier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblCashier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CashierOperate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 592);
+            this.ClientSize = new System.Drawing.Size(995, 516);
             this.Controls.Add(this.lblCashier);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.listLiveQueue);
@@ -149,7 +148,7 @@ namespace QueueingSystem
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CashierOperate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "QUEUEING";
+            this.Text = "Queuing";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CashierOperate_FormClosing);
             this.Load += new System.EventHandler(this.CashierOperate_Load);
             this.ResumeLayout(false);

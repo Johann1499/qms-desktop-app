@@ -48,7 +48,7 @@ namespace QueueingSystem
                     var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
                     // Send the PUT request to the Laravel API
-                    var response = await client.PutAsync($"http://localhost:8080/api/cashiers/{primaryKeyValue}", content);
+                    var response = await client.PutAsync($"https://www.dctqueue.info/api/cashiers/{primaryKeyValue}", content);
 
                     if (response.IsSuccessStatusCode)
                     {

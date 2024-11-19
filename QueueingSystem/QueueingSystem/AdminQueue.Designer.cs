@@ -36,10 +36,10 @@ namespace QueueingSystem
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.label1.Location = new System.Drawing.Point(36, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 46);
+            this.label1.Size = new System.Drawing.Size(288, 63);
             this.label1.TabIndex = 0;
             this.label1.Text = "Queue List";
             // 
@@ -52,9 +52,9 @@ namespace QueueingSystem
             this.listQueue.FullRowSelect = true;
             this.listQueue.GridLines = true;
             this.listQueue.HideSelection = false;
-            this.listQueue.Location = new System.Drawing.Point(12, 64);
+            this.listQueue.Location = new System.Drawing.Point(47, 146);
             this.listQueue.Name = "listQueue";
-            this.listQueue.Size = new System.Drawing.Size(576, 333);
+            this.listQueue.Size = new System.Drawing.Size(500, 206);
             this.listQueue.TabIndex = 1;
             this.listQueue.UseCompatibleStateImageBehavior = false;
             this.listQueue.View = System.Windows.Forms.View.Details;

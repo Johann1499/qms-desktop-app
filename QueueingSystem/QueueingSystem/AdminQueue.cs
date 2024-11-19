@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace QueueingSystem
     public partial class AdminQueue : Form
     {
         private static readonly HttpClient client = new HttpClient();
-        private const string apiUrl = "http://localhost:8080/api/queues";
+        private const string apiUrl = "https://www.dctqueue.info/api/queues";
         private Timer refreshTimer; // Timer to refresh data
 
         public AdminQueue()
@@ -54,28 +55,67 @@ namespace QueueingSystem
 
         private async Task LoadQueueData()
         {
-            listQueue.Items.Clear(); // Clear existing items before loading new data
+            int retryCount = 0;
+            const int maxRetries = 5;
+            const int baseDelay = 2000; // 2 seconds initial delay
 
-            try
+            while (retryCount < maxRetries)
             {
-                // Fetch data from Laravel API
-                var queues = await FetchQueueData();
-
-                foreach (var queue in queues)
+                try
                 {
-                    ListViewItem lv = new ListViewItem(queue["id"].ToString());
-                    lv.SubItems.Add(queue["name"].ToString());
-                    lv.SubItems.Add(queue["student_number"].ToString());
-                    lv.SubItems.Add(queue["department"].ToString());
-                    lv.SubItems.Add(queue["queue_number"].ToString());
-                    listQueue.Items.Add(lv);
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    // Check if response status is 429 (Too Many Requests)
+                    if (response.StatusCode == (System.Net.HttpStatusCode)429)
+                    {
+                        retryCount++;
+                        if (response.Headers.TryGetValues("Retry-After", out var values) && int.TryParse(values.FirstOrDefault(), out int retryAfter))
+                        {
+                            await Task.Delay(retryAfter * 1000); // Wait based on the Retry-After header
+                        }
+                        else
+                        {
+                            await Task.Delay(baseDelay * (int)Math.Pow(2, retryCount - 1)); // Exponential backoff
+                        }
+                        continue; // Retry the loop
+                    }
+
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+
+                    JArray queues = JArray.Parse(responseBody);
+
+                    listQueue.Items.Clear(); // Clear existing items before adding new data
+
+                    foreach (var queue in queues)
+                    {
+                        ListViewItem lv = new ListViewItem(queue["id"].ToString());
+                        lv.SubItems.Add(queue["name"].ToString());
+                        lv.SubItems.Add(queue["student_number"].ToString());
+                        lv.SubItems.Add(queue["department"].ToString());
+                        lv.SubItems.Add(queue["queue_number"].ToString());
+                        listQueue.Items.Add(lv);
+                    }
+                    break; // Exit loop if successful
+                }
+                catch (HttpRequestException e)
+                {
+                    MessageBox.Show($"Error loading queue data. Please check the network or API availability.\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break; // Exit if network or HTTP error occurs
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Unexpected error occurred while loading queue data.\n\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break; // Exit for unexpected errors
                 }
             }
-            catch (Exception ex)
+
+            if (retryCount == maxRetries)
             {
-                MessageBox.Show("Error fetching data: " + ex.Message);
+                MessageBox.Show("Maximum retry attempts reached. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private async Task<JArray> FetchQueueData()
         {
@@ -94,6 +134,7 @@ namespace QueueingSystem
             // Adjust column widths when the form is resized
             SetColumnWidths();
         }
+
 
         private void SetColumnWidths()
         {

@@ -33,15 +33,30 @@ namespace QueueingSystem
         private void btnAdminQueue_Click(object sender, EventArgs e)
         {
             loadForm(new AdminQueue());
+            btnAdminQueue.Enabled = false;
+            btnAdminHome.Enabled = true;
+            btnAdminCashier.Enabled = true;
         }
 
         private void btnAdminCashier_Click(object sender, EventArgs e)
         {
             loadForm(new AdminCashier());
+
+            btnAdminQueue.Enabled = true;
+            btnAdminHome.Enabled = true;
+            btnAdminCashier.Enabled = false;
+
         }
         private void btnAdminHome_Click(object sender, EventArgs e)
         {
             loadForm(new AdminHome());
+            btnAdminQueue.Enabled = true;
+            btnAdminHome.Enabled = false;
+            btnAdminCashier.Enabled = true;
+        }
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            loadForm(new AdminSetting());
         }
 
 
@@ -66,6 +81,6 @@ namespace QueueingSystem
                 this.Close();
         }
 
-        
+       
     }
 }

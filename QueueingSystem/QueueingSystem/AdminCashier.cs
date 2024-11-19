@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -9,7 +10,7 @@ namespace QueueingSystem
     public partial class AdminCashier : Form
     {
         private static readonly HttpClient client = new HttpClient();
-        private const string apiUrl = "http://localhost:8080/api/cashiers";
+        private const string apiUrl = "https://www.dctqueue.info/api/cashiers";
         private Timer refreshTimer;
 
         public AdminCashier()
@@ -29,7 +30,7 @@ namespace QueueingSystem
             listCashier.View = View.Details;
             listCashier.FullRowSelect = true;
 
-            listCashier.Columns.Add("ID");
+            // Remove ID column
             listCashier.Columns.Add("Name");
             listCashier.Columns.Add("Department");
             listCashier.Columns.Add("Status");
@@ -47,28 +48,68 @@ namespace QueueingSystem
 
         private async Task LoadCashierData()
         {
-            try
+            int retryCount = 0;
+            const int maxRetries = 5;
+            const int baseDelay = 2000;
+
+            while (retryCount < maxRetries)
             {
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
-                response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
-
-                JArray cashiers = JArray.Parse(responseBody);
-
-                listCashier.Items.Clear();
-
-                foreach (var item in cashiers)
+                try
                 {
-                    ListViewItem lv = new ListViewItem(item["id"].ToString());
-                    lv.SubItems.Add(item["name"].ToString());
-                    lv.SubItems.Add(item["department"].ToString());
-                    lv.SubItems.Add((bool)item["status"] ? "Active" : "Inactive");
-                    listCashier.Items.Add(lv);
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.StatusCode == (System.Net.HttpStatusCode)429)
+                    {
+                        retryCount++;
+                        if (response.Headers.TryGetValues("Retry-After", out var values) && int.TryParse(values.FirstOrDefault(), out int retryAfter))
+                        {
+                            await Task.Delay(retryAfter * 1000);
+                        }
+                        else
+                        {
+                            await Task.Delay(baseDelay * (int)Math.Pow(2, retryCount - 1));
+                        }
+                        continue;
+                    }
+
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+
+                    JArray cashiers = JArray.Parse(responseBody);
+
+                    listCashier.Items.Clear();
+
+                    foreach (var item in cashiers)
+                    {
+                        ListViewItem lv = new ListViewItem(item["name"].ToString())
+                        {
+                            // Store ID in Tag
+                            Tag = item["id"].ToString(),
+                            SubItems =
+                            {
+                                item["department"].ToString(),
+                                (bool)item["status"] ? "Active" : "Inactive"
+                            }
+                        };
+                        listCashier.Items.Add(lv);
+                    }
+                    break;
+                }
+                catch (HttpRequestException e)
+                {
+                    MessageBox.Show($"Error loading cashier data. Please check the network or API availability.\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Unexpected error occurred while loading cashier data.\n\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
                 }
             }
-            catch (Exception ex)
+
+            if (retryCount == maxRetries)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                MessageBox.Show("Maximum retry attempts reached. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -77,11 +118,10 @@ namespace QueueingSystem
             if (listCashier.SelectedItems.Count > 0)
             {
                 ListViewItem selectedItem = listCashier.SelectedItems[0];
-                string id = selectedItem.SubItems[0].Text;
-                string name = selectedItem.SubItems[1].Text;
-                string dept = selectedItem.SubItems[2].Text;
+                string id = selectedItem.Tag.ToString(); // Retrieve ID from Tag
+                string name = selectedItem.SubItems[0].Text;
+                string dept = selectedItem.SubItems[1].Text;
 
-                // Create an instance of EditCashier and pass the callback
                 EditCashier edit = new EditCashier(id, name, dept)
                 {
                     RefreshList = async () => await LoadCashierData()
@@ -94,13 +134,12 @@ namespace QueueingSystem
             }
         }
 
-
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             if (listCashier.SelectedItems.Count > 0)
             {
                 ListViewItem selectedItem = listCashier.SelectedItems[0];
-                string id = selectedItem.SubItems[0].Text;
+                string id = selectedItem.Tag.ToString(); // Retrieve ID from Tag
 
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this cashier?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
@@ -132,7 +171,6 @@ namespace QueueingSystem
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            // Create an instance of AddNewCashier and pass the callback
             AddNewCashier add = new AddNewCashier
             {
                 RefreshList = async () => await LoadCashierData()
@@ -149,10 +187,9 @@ namespace QueueingSystem
         {
             int listViewWidth = listCashier.ClientSize.Width;
 
-            listCashier.Columns[0].Width = (int)(listViewWidth * 0.1); // ID (10%)
-            listCashier.Columns[1].Width = (int)(listViewWidth * 0.3); // Name (30%)
-            listCashier.Columns[2].Width = (int)(listViewWidth * 0.3); // Department (30%)
-            listCashier.Columns[3].Width = (int)(listViewWidth * 0.3); // Status (30%)
+            listCashier.Columns[0].Width = (int)(listViewWidth * 0.4); // Name (40%)
+            listCashier.Columns[1].Width = (int)(listViewWidth * 0.3); // Department (30%)
+            listCashier.Columns[2].Width = (int)(listViewWidth * 0.3); // Status (30%)
         }
     }
 }

@@ -51,10 +51,10 @@ namespace QueueingSystem
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
+            this.label1.Location = new System.Drawing.Point(36, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(434, 46);
+            this.label1.Size = new System.Drawing.Size(506, 54);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome Administrator";
             // 
@@ -62,7 +62,7 @@ namespace QueueingSystem
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label2.Location = new System.Drawing.Point(51, 124);
+            this.label2.Location = new System.Drawing.Point(39, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(209, 31);
             this.label2.TabIndex = 1;
@@ -72,7 +72,7 @@ namespace QueueingSystem
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label3.Location = new System.Drawing.Point(51, 238);
+            this.label3.Location = new System.Drawing.Point(39, 252);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 31);
             this.label3.TabIndex = 2;
@@ -82,7 +82,7 @@ namespace QueueingSystem
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label4.Location = new System.Drawing.Point(315, 124);
+            this.label4.Location = new System.Drawing.Point(303, 138);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 31);
             this.label4.TabIndex = 3;
@@ -91,49 +91,52 @@ namespace QueueingSystem
             // lblBasic
             // 
             this.lblBasic.AutoSize = true;
-            this.lblBasic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblBasic.Location = new System.Drawing.Point(227, 191);
+            this.lblBasic.BackColor = System.Drawing.Color.Thistle;
+            this.lblBasic.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblBasic.Location = new System.Drawing.Point(206, 199);
             this.lblBasic.Name = "lblBasic";
-            this.lblBasic.Size = new System.Drawing.Size(18, 20);
+            this.lblBasic.Size = new System.Drawing.Size(29, 31);
             this.lblBasic.TabIndex = 4;
             this.lblBasic.Text = "0";
             // 
             // lblCollege
             // 
             this.lblCollege.AutoSize = true;
-            this.lblCollege.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblCollege.Location = new System.Drawing.Point(227, 308);
+            this.lblCollege.BackColor = System.Drawing.Color.Thistle;
+            this.lblCollege.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblCollege.Location = new System.Drawing.Point(206, 317);
             this.lblCollege.Name = "lblCollege";
-            this.lblCollege.Size = new System.Drawing.Size(18, 20);
+            this.lblCollege.Size = new System.Drawing.Size(29, 31);
             this.lblCollege.TabIndex = 5;
             this.lblCollege.Text = "0";
             // 
             // lblActiveBasic
             // 
             this.lblActiveBasic.AutoSize = true;
-            this.lblActiveBasic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblActiveBasic.Location = new System.Drawing.Point(442, 175);
+            this.lblActiveBasic.BackColor = System.Drawing.Color.Thistle;
+            this.lblActiveBasic.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblActiveBasic.Location = new System.Drawing.Point(430, 184);
             this.lblActiveBasic.Name = "lblActiveBasic";
-            this.lblActiveBasic.Size = new System.Drawing.Size(18, 20);
+            this.lblActiveBasic.Size = new System.Drawing.Size(29, 31);
             this.lblActiveBasic.TabIndex = 10;
             this.lblActiveBasic.Text = "0";
             // 
             // lblInactiveBasic
             // 
             this.lblInactiveBasic.AutoSize = true;
-            this.lblInactiveBasic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblInactiveBasic.Location = new System.Drawing.Point(442, 209);
+            this.lblInactiveBasic.BackColor = System.Drawing.Color.Thistle;
+            this.lblInactiveBasic.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblInactiveBasic.Location = new System.Drawing.Point(430, 218);
             this.lblInactiveBasic.Name = "lblInactiveBasic";
-            this.lblInactiveBasic.Size = new System.Drawing.Size(18, 20);
+            this.lblInactiveBasic.Size = new System.Drawing.Size(29, 31);
             this.lblInactiveBasic.TabIndex = 11;
             this.lblInactiveBasic.Text = "0";
-            this.lblInactiveBasic.Click += new System.EventHandler(this.lblInactiveBasic_Click);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label17.Location = new System.Drawing.Point(315, 238);
+            this.label17.Location = new System.Drawing.Point(303, 252);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(108, 31);
             this.label17.TabIndex = 12;
@@ -142,20 +145,22 @@ namespace QueueingSystem
             // lblInactiveCollege
             // 
             this.lblInactiveCollege.AutoSize = true;
-            this.lblInactiveCollege.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblInactiveCollege.Location = new System.Drawing.Point(442, 321);
+            this.lblInactiveCollege.BackColor = System.Drawing.Color.Thistle;
+            this.lblInactiveCollege.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblInactiveCollege.Location = new System.Drawing.Point(430, 330);
             this.lblInactiveCollege.Name = "lblInactiveCollege";
-            this.lblInactiveCollege.Size = new System.Drawing.Size(18, 20);
+            this.lblInactiveCollege.Size = new System.Drawing.Size(29, 31);
             this.lblInactiveCollege.TabIndex = 16;
             this.lblInactiveCollege.Text = "0";
             // 
             // lblActiveCollege
             // 
             this.lblActiveCollege.AutoSize = true;
-            this.lblActiveCollege.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblActiveCollege.Location = new System.Drawing.Point(442, 285);
+            this.lblActiveCollege.BackColor = System.Drawing.Color.Thistle;
+            this.lblActiveCollege.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblActiveCollege.Location = new System.Drawing.Point(430, 295);
             this.lblActiveCollege.Name = "lblActiveCollege";
-            this.lblActiveCollege.Size = new System.Drawing.Size(18, 20);
+            this.lblActiveCollege.Size = new System.Drawing.Size(29, 31);
             this.lblActiveCollege.TabIndex = 15;
             this.lblActiveCollege.Text = "0";
             // 
@@ -163,7 +168,7 @@ namespace QueueingSystem
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label5.Location = new System.Drawing.Point(353, 170);
+            this.label5.Location = new System.Drawing.Point(341, 184);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 25);
             this.label5.TabIndex = 17;
@@ -173,7 +178,7 @@ namespace QueueingSystem
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label6.Location = new System.Drawing.Point(340, 204);
+            this.label6.Location = new System.Drawing.Point(328, 218);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 25);
             this.label6.TabIndex = 18;
@@ -183,7 +188,7 @@ namespace QueueingSystem
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label7.Location = new System.Drawing.Point(353, 281);
+            this.label7.Location = new System.Drawing.Point(341, 295);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 25);
             this.label7.TabIndex = 19;
@@ -193,7 +198,7 @@ namespace QueueingSystem
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label8.Location = new System.Drawing.Point(340, 316);
+            this.label8.Location = new System.Drawing.Point(328, 330);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(96, 25);
             this.label8.TabIndex = 20;
@@ -203,7 +208,7 @@ namespace QueueingSystem
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label9.Location = new System.Drawing.Point(74, 185);
+            this.label9.Location = new System.Drawing.Point(62, 199);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(138, 25);
             this.label9.TabIndex = 21;
@@ -213,7 +218,7 @@ namespace QueueingSystem
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label10.Location = new System.Drawing.Point(74, 303);
+            this.label10.Location = new System.Drawing.Point(62, 317);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(138, 25);
             this.label10.TabIndex = 22;

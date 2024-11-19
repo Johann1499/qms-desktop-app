@@ -10,7 +10,7 @@ namespace QueueingSystem
 {
     public partial class CashierLoginPage : Form
     {
-        private static readonly HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:8080/api/") };
+        private static readonly HttpClient client = new HttpClient { BaseAddress = new Uri("https://www.dctqueue.info/api/") };
         private string selectedCashierID = "";
         private string selectedCashierName = "";
         private JArray allCashiers;
@@ -31,14 +31,39 @@ namespace QueueingSystem
 
         private async Task LoadAllCashiersAsync()
         {
-            try
+            int retryCount = 0;
+            const int maxRetries = 5;
+            const int baseDelay = 2000; // 2 seconds initial delay
+
+            while (retryCount < maxRetries)
             {
-                string response = await client.GetStringAsync("cashiers/inactive");
-                allCashiers = JArray.Parse(response);
+                try
+                {
+                    string response = await client.GetStringAsync("cashiers/inactive");
+                    allCashiers = JArray.Parse(response);
+                    break; // Exit loop if successful
+                }
+                catch (HttpRequestException e)
+                {
+                    ShowError("Failed to load cashiers.", e);
+                    break; // Exit if network or HTTP error occurs
+                }
+                catch (Exception ex)
+                {
+                    ShowError("Unexpected error occurred while loading cashiers.", ex);
+                    break; // Exit for unexpected errors
+                }
+
+                retryCount++;
+                if (retryCount < maxRetries)
+                {
+                    await Task.Delay(baseDelay * (int)Math.Pow(2, retryCount - 1)); // Exponential backoff
+                }
             }
-            catch (Exception ex)
+
+            if (retryCount == maxRetries)
             {
-                ShowError("Failed to load cashiers.", ex);
+                MessageBox.Show("Maximum retry attempts reached. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -92,6 +117,7 @@ namespace QueueingSystem
 
         private async void btnNext_Click(object sender, EventArgs e)
         {
+            btnNext.Enabled = false;
             if (string.IsNullOrEmpty(selectedCashierID))
             {
                 MessageBox.Show("Please select a cashier.");
@@ -119,34 +145,86 @@ namespace QueueingSystem
 
         private async Task<bool> CheckCashierStatusAsync(string cashierId)
         {
-            try
+            int retryCount = 0;
+            const int maxRetries = 5;
+            const int baseDelay = 2000; // 2 seconds initial delay
+
+            while (retryCount < maxRetries)
             {
-                var response = await client.GetStringAsync($"cashiers/{cashierId}/status");
-                var result = JObject.Parse(response);
-                return result["status"]?.ToString() == "1"; // Assuming status '1' means active
+                try
+                {
+                    var response = await client.GetStringAsync($"cashiers/{cashierId}/status");
+                    var result = JObject.Parse(response);
+                    return result["status"]?.ToString() == "1"; // Assuming status '1' means active
+                }
+                catch (HttpRequestException e)
+                {
+                    ShowError("Error checking cashier status.", e);
+                    break; // Exit if network or HTTP error occurs
+                }
+                catch (Exception ex)
+                {
+                    ShowError("Unexpected error occurred while checking cashier status.", ex);
+                    break; // Exit for unexpected errors
+                }
+
+                retryCount++;
+                if (retryCount < maxRetries)
+                {
+                    await Task.Delay(baseDelay * (int)Math.Pow(2, retryCount - 1)); // Exponential backoff
+                }
             }
-            catch (Exception ex)
+
+            if (retryCount == maxRetries)
             {
-                ShowError("Error checking cashier status.", ex);
+                MessageBox.Show("Maximum retry attempts reached. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+            return false;
         }
 
         private async Task<bool> SetCashierActiveAsync(string cashierId)
         {
+            int retryCount = 0;
+            const int maxRetries = 5;
+            const int baseDelay = 2000; // 2 seconds initial delay
+
             var updateData = new { status = 1 }; // Set status to active (1)
             var content = new StringContent(JObject.FromObject(updateData).ToString(), Encoding.UTF8, "application/json");
 
-            try
+            while (retryCount < maxRetries)
             {
-                var response = await client.PutAsync($"cashiers/{cashierId}/status", content);
-                return response.IsSuccessStatusCode;
+                try
+                {
+                    var response = await client.PutAsync($"cashiers/{cashierId}/status", content);
+                    return response.IsSuccessStatusCode;
+                }
+                catch (HttpRequestException e)
+                {
+                    ShowError("Error setting cashier active.", e);
+                    break; // Exit if network or HTTP error occurs
+                }
+                catch (Exception ex)
+                {
+                    ShowError("Unexpected error occurred while setting cashier active.", ex);
+                    break; // Exit for unexpected errors
+                }
+
+                retryCount++;
+                if (retryCount < maxRetries)
+                {
+                    await Task.Delay(baseDelay * (int)Math.Pow(2, retryCount - 1)); // Exponential backoff
+                }
             }
-            catch (Exception ex)
+
+            if (retryCount == maxRetries)
             {
-                ShowError("Error setting cashier active.", ex);
+                MessageBox.Show("Maximum retry attempts reached. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+            return false;
         }
 
         private void ShowError(string message, Exception ex)

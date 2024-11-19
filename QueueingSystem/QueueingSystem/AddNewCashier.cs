@@ -9,6 +9,7 @@ namespace QueueingSystem
     public partial class AddNewCashier : Form
     {
         private static readonly HttpClient client = new HttpClient();
+        private const string apiUrl = "https://www.dctqueue.info/api/cashiers";
 
         // Define a delegate for the callback
         public delegate void RefreshListCallback();
@@ -65,7 +66,7 @@ namespace QueueingSystem
                     var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
                     // Send the POST request to the Laravel API
-                    var response = await client.PostAsync("http://localhost:8080/api/cashiers", content);
+                    var response = await client.PostAsync(apiUrl, content);
 
                     if (response.IsSuccessStatusCode)
                     {

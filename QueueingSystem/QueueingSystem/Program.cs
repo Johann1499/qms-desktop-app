@@ -16,10 +16,11 @@ namespace QueueingSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            loginPage log = new loginPage();
-            //CashierOperate cashier = new CashierOperate("Basic Education", "16", "Cashier 4");
+            loginPage login = new loginPage();
+            CashierOperate cashier = new CashierOperate("Basic Education", "24", "Cashier 6");
             //cashier.Show();
-            log.Show();
+            
+            login.Show();
             //live.Show();
             Application.Run();
         }

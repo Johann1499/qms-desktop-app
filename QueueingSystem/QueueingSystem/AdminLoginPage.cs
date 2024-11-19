@@ -65,7 +65,7 @@ namespace QueueingSystem
                 string json = JsonConvert.SerializeObject(payload);
                 HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = await client.PostAsync("http://localhost:8080/api/admin/login", content);
+                HttpResponseMessage response = await client.PostAsync("https://www.dctqueue.info/api/admin/login", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -86,6 +86,27 @@ namespace QueueingSystem
             if (e.KeyCode == Keys.Enter)
             {
                 btnLogin.PerformClick();
+            }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            btnShowPassword.Text = "Show";
+        }
+
+        private void btnShowPassword_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.UseSystemPasswordChar)
+            {
+                // Show password
+                txtPassword.UseSystemPasswordChar = false;  // Show the password (no masking)
+                btnShowPassword.Text = "Hide";  // Change button text to "Hide"
+            }
+            else
+            {
+                // Hide password
+                txtPassword.UseSystemPasswordChar = true;  // Mask the password (show '*')
+                btnShowPassword.Text = "Show";  // Change button text to "Show"
             }
         }
     }

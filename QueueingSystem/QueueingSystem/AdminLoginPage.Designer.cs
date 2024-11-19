@@ -34,6 +34,7 @@ namespace QueueingSystem
             this.label1 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.btnShowPassword = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -77,6 +78,7 @@ namespace QueueingSystem
             this.txtPassword.Size = new System.Drawing.Size(390, 38);
             this.txtPassword.TabIndex = 9;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtUsername
             // 
@@ -86,12 +88,23 @@ namespace QueueingSystem
             this.txtUsername.Size = new System.Drawing.Size(390, 38);
             this.txtUsername.TabIndex = 8;
             // 
+            // btnShowPassword
+            // 
+            this.btnShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnShowPassword.Location = new System.Drawing.Point(332, 137);
+            this.btnShowPassword.Name = "btnShowPassword";
+            this.btnShowPassword.Size = new System.Drawing.Size(70, 38);
+            this.btnShowPassword.TabIndex = 13;
+            this.btnShowPassword.UseVisualStyleBackColor = true;
+            this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
+            // 
             // AdminLoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(414, 243);
+            this.Controls.Add(this.btnShowPassword);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -116,5 +129,6 @@ namespace QueueingSystem
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.Button btnShowPassword;
     }
 }
